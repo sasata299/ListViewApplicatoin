@@ -2,8 +2,9 @@ package com.example.sasata299.listviewapplicatoin;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.widget.ArrayAdapter;
 import android.widget.ListView;
+
+import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -20,11 +21,18 @@ public class MainActivity extends AppCompatActivity {
 
         listView = (ListView) findViewById(R.id.listView);
 
-        // ArrayAdapterオブジェクトの作成
-        // simple_list_item_1はもともと用意されているレイアウトファイルのID
-        ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, foods);
+        ArrayList<Food> list = new ArrayList<>();
+        MyAdapter myAdapter = new MyAdapter(this);
+
+        Food food = new Food();
+        food.setName("りんご");
+        food.setPrice(100);
+        list.add(food);
+        myAdapter.notifyDataSetChanged();
+
+        myAdapter.setFoodList(list);
 
         // Adapterの指定
-        listView.setAdapter(arrayAdapter);
+        listView.setAdapter(myAdapter);
     }
 }
