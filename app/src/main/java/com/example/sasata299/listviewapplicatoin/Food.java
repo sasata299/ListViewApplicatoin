@@ -1,10 +1,22 @@
 package com.example.sasata299.listviewapplicatoin;
 
+import android.graphics.Bitmap;
+
 /**
  * Created by sasata299 on 16/09/11.
  */
 public class Food {
     long id;
+    private Bitmap icon;
+
+    public Bitmap getIcon() {
+        return icon;
+    }
+
+    public void setIcon(Bitmap icon) {
+        this.icon = icon;
+    }
+
     private String name;
     private int price;
 

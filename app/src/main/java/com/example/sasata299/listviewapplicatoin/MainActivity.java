@@ -1,5 +1,6 @@
 package com.example.sasata299.listviewapplicatoin;
 
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.widget.ListView;
@@ -24,11 +25,17 @@ public class MainActivity extends AppCompatActivity {
         ArrayList<Food> list = new ArrayList<>();
         MyAdapter myAdapter = new MyAdapter(this);
 
-//        Food food = new Food();
-//        food.setName("りんご");
-//        food.setPrice(100);
-//        list.add(food);
-//        myAdapter.notifyDataSetChanged();
+        Food food1 = new Food();
+        food1.setName("りんご");
+        food1.setPrice(100);
+        food1.setIcon(BitmapFactory.decodeResource(getResources(), R.mipmap.ic_launcher));
+        list.add(food1);
+        Food food2 = new Food();
+        food2.setName("パイナップル");
+        food2.setPrice(400);
+        food2.setIcon(BitmapFactory.decodeResource(getResources(), R.mipmap.ic_launcher));
+        list.add(food2);
+        //myAdapter.notifyDataSetChanged();
 
         myAdapter.setFoodList(list);
 
