@@ -24,15 +24,16 @@ public class MainActivity extends AppCompatActivity {
         ArrayList<Food> list = new ArrayList<>();
         MyAdapter myAdapter = new MyAdapter(this);
 
-        Food food = new Food();
-        food.setName("りんご");
-        food.setPrice(100);
-        list.add(food);
-        myAdapter.notifyDataSetChanged();
+//        Food food = new Food();
+//        food.setName("りんご");
+//        food.setPrice(100);
+//        list.add(food);
+//        myAdapter.notifyDataSetChanged();
 
         myAdapter.setFoodList(list);
 
         // Adapterの指定
+        listView.setEmptyView(findViewById(R.id.emptyView));
         listView.setAdapter(myAdapter);
     }
 }
