@@ -44,12 +44,31 @@ public class MyAdapter extends BaseAdapter {
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-        convertView = layoutInflater.inflate(R.layout.foodrow, parent, false);
+        ViewHolder holder;
 
-        ((TextView)convertView.findViewById(R.id.name)).setText(foodList.get(position).getName());
-        ((TextView)convertView.findViewById(R.id.price)).setText(String.valueOf(foodList.get(position).getPrice()));
-        ((ImageView)convertView.findViewById(R.id.icon)).setImageBitmap(foodList.get(position).getIcon());
+        if (convertView == null) {
+            convertView = layoutInflater.inflate(R.layout.foodrow, parent, false);
 
+            holder = new ViewHolder();
+
+            // ホルダークラスにレイアウト内のビューを設定する
+            // findViewByIdを初回だけにする
+            holder.nameView = (TextView) convertView.findViewById(R.id.name);
+            holder.priceView = (TextView) convertView.findViewById(R.id.price);
+            holder.iconView = (ImageView) convertView.findViewById(R.id.icon);
+
+            // タグにホルダークラスを設定する
+            convertView.setTag(holder);
+        } else {
+            // 2回目以降はビューが設定されているので、タグからホルダークラスを取得する
+            holder = (ViewHolder) convertView.getTag();
+        }
+
+        Food food = foodList.get(position);
+        holder.nameView.setText(food.getName());
+        holder.priceView.setText(String.valueOf(food.getPrice()));
+        holder.iconView.setImageBitmap(food.getIcon());
+        
         return convertView;
     }
 }
