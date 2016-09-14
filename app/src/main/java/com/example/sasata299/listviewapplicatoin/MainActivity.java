@@ -12,7 +12,10 @@ public class MainActivity extends AppCompatActivity {
     ListView listView;
 
     private static final String[] foods = {
-            "りんご", "ばなな", "パイナップル", "いちご"
+            "りんご", "ばなな", "パイナップル", "いちご", "梨", "キウイ", "みかん", "スイカ", "ぶどう"
+    };
+    private static final int[] prices = {
+            100, 200, 300, 400, 500, 600, 700, 800, 900
     };
 
     @Override
@@ -25,16 +28,14 @@ public class MainActivity extends AppCompatActivity {
         ArrayList<Food> list = new ArrayList<>();
         MyAdapter myAdapter = new MyAdapter(this);
 
-        Food food1 = new Food();
-        food1.setName("りんご");
-        food1.setPrice(100);
-        food1.setIcon(BitmapFactory.decodeResource(getResources(), R.mipmap.ic_launcher));
-        list.add(food1);
-        Food food2 = new Food();
-        food2.setName("パイナップル");
-        food2.setPrice(400);
-        food2.setIcon(BitmapFactory.decodeResource(getResources(), R.mipmap.ic_launcher));
-        list.add(food2);
+        for (int i = 0; i < foods.length; i++) {
+            Food food = new Food();
+            food.setName(foods[i]);
+            food.setPrice(prices[i]);
+            food.setIcon(BitmapFactory.decodeResource(getResources(), R.mipmap.ic_launcher));
+            list.add(food);
+        }
+
         //myAdapter.notifyDataSetChanged();
 
         myAdapter.setFoodList(list);

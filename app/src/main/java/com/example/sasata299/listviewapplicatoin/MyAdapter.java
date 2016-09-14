@@ -5,6 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.util.ArrayList;
@@ -47,6 +48,7 @@ public class MyAdapter extends BaseAdapter {
 
         ((TextView)convertView.findViewById(R.id.name)).setText(foodList.get(position).getName());
         ((TextView)convertView.findViewById(R.id.price)).setText(String.valueOf(foodList.get(position).getPrice()));
+        ((ImageView)convertView.findViewById(R.id.icon)).setImageBitmap(foodList.get(position).getIcon());
 
         return convertView;
     }
